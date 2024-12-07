@@ -1,0 +1,22 @@
+//instalación Google maps
+sudo apt-get update
+sudo apt upgrade
+sudo wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/google-earth.gpg >/dev/null
+ls /etc/apt/keyrings
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-earth.gpg] https://dl.google.com/linux/earth/deb/ stable main" > /etc/apt/sources.list.d/google-earth.list'
+cat /etc/apt/sources.list.d/google-earth.list
+sudo apt update
+sudo apt install google-earth-pro-stable
+sudo rm /etc/apt/sources.list.d/google-earth-*.list /etc/apt/trusted.gpg.d/google-earth-*.gpg
+sudo apt update
+sudo reboot now
+
+//comandos para splat
+./mapas_sdf.sh
+sudo apt install vim
+sudo apt-get install splat
+sudo reboot now
+splat -t transmisor.qth -r receptor.qth -metric -kml
+splat -t transmisor.qth -metric -kml -L 0 -dbm -dB -148
+splat -t transmisor.qth -metric -kml -R 25 -L 1.5 -dbm -dB -148
+splat -t transmisor.qth -metric -kml -L 0 -dbm -dB -148
